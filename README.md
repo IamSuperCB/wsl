@@ -96,6 +96,7 @@ sudo cp dockerdaemon.json /etc/docker/daemon.json
 
 Start docker service
 
+- [docker-service](bin/docker-service)
 - Within distro
   ```bash
   cd ~
@@ -103,7 +104,7 @@ Start docker service
   ```
 - From powershell
   ```powershell
-  wsl -d UbuntuPersonal /home/betancourtca/bin/docker-service
+  wsl -d Ubuntu /home/betancourtca/bin/docker-service
   ```
 
 ## UbuntuUPMCE (work)
