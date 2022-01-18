@@ -20,6 +20,8 @@ Template project for creating private repository to manage wsl development envir
 ```powershell
 cd ~
 git clone https://github.com/IamSuperCB/wsl.git
+mkdir wsl/distros
+mkdir wsl/backups
 ```
 
 ## Ubuntu (Personal)
@@ -64,7 +66,6 @@ nvm alias default lts/fermium
 
 ```powershell
 cd ~/wsl
-mkdir backups
 wsl --export Ubuntu backups/UbuntuBase.tar
 ```
 
@@ -74,10 +75,13 @@ Clone this project into Ubuntu
 
 ```bash
 cd ~
-mkdir github
-mkdir github/iamsupercb
-cd github/iamsupercb
-git clone https://github.com/IamSuperCB/fos.git
+git clone https://github.com/IamSuperCB/wsl.git
+mkdir wsl/data
+ln -s wsl/data data
+ln -s wsl/bin bin
+ln -s wsl/.gitconfig .gitconfig
+ln -s wsl/.npmrc .npmrc
+ln -s wsl/nodemon.json nodemon.json
 ```
 
 Install docker using [ubuntu docker-engine instructions](https://docs.docker.com/engine/install/ubuntu/).
@@ -85,12 +89,9 @@ Install docker using [ubuntu docker-engine instructions](https://docs.docker.com
 Configure daemon
 
 ```bash
-cd ~
+cd ~/wsl
 sudo mkdir /etc/docker
 sudo cp dockerdaemon.json /etc/docker/daemon.json
-mkdir bin
-cp docker-service
-
 ```
 
 Start docker service
@@ -114,3 +115,5 @@ cd ~/wsl
 mkdir distros/UbuntuUPMCE
 wsl --import UbuntuUPMCE distros/UbuntuUPMCE backups/UbuntuBase.tar
 ```
+
+### More to come

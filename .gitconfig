@@ -1,0 +1,20 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Carlos Betancourt
+	email = carlos@betancourtca.net
+[credential "https://github.com"]
+	username = betancourtca
+[credential "https://localhost:8443"]
+	username = betancourtca@upmc.edu
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/libexec/git-core/git-credential-wincred.exe
+[core]
+	autocrlf = false
+[fetch]
+	prune = true
+[http]
+	sslVerify = false
