@@ -11,18 +11,16 @@ Template project for creating private repository to manage wsl development envir
   - Git
     > choco install git
 - [WSL](https://docs.microsoft.com/en-us/windows/wsl/)
-  - Default install [instructions](https://docs.microsoft.com/en-us/windows/wsl/install)
-  - App store [preview](https://www.microsoft.com/store/productId/9P9TQF7MRM4R)
   - [Best Practices](https://docs.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password)
-
-## Clone this repository (powershell)
-
-```powershell
-cd ~
-git clone https://github.com/IamSuperCB/wsl.git
-mkdir wsl/distros
-mkdir wsl/backups
-```
+  - Choose a method
+    - Default install [instructions](https://docs.microsoft.com/en-us/windows/wsl/install)
+    - App store [preview](https://www.microsoft.com/store/productId/9P9TQF7MRM4R)
+  - create wsl folder in home directory
+    ```powershell
+    cd ~
+    mkdir wsl/distros
+    mkdir wsl/backups
+    ```
 
 ## Ubuntu (Personal)
 
@@ -66,7 +64,7 @@ nvm alias default lts/fermium
 
 ```powershell
 cd ~/wsl
-wsl --export Ubuntu backups/UbuntuBase.tar
+wsl --export Ubuntu backups/ubunt.base.tar
 ```
 
 ### finish configuration (wsl -d Ubuntu)
@@ -75,13 +73,22 @@ Clone this project into Ubuntu
 
 ```bash
 cd ~
-git clone https://github.com/IamSuperCB/wsl.git
-mkdir wsl/data
-ln -s wsl/data data
-ln -s wsl/bin bin
-ln -s wsl/.gitconfig .gitconfig
-ln -s wsl/.npmrc .npmrc
-ln -s wsl/nodemon.json nodemon.json
+git clone https://github.com/IamSuperCB/wsl.git workspace
+mkdir workspace/data
+ln -s workspace/data data
+ln -s workspace/bin bin
+ln -s workspace/.gitconfig .gitconfig
+ln -s workspace/.npmrc .npmrc
+ln -s workspace/nodemon.json nodemon.json
+```
+
+Add the following string to ~/.profile
+
+```bash
+# Exposes workspace to other distros
+if [ ! -d /mnt/wsl/fos ]; then
+    wsl.exe -d $WSL_DISTRO_NAME -u root /home/$USER/bin/configure-for-secondary-wsl.sh
+fi
 ```
 
 Install docker using [ubuntu docker-engine instructions](https://docs.docker.com/engine/install/ubuntu/).
@@ -94,17 +101,16 @@ sudo mkdir /etc/docker
 sudo cp dockerdaemon.json /etc/docker/daemon.json
 ```
 
-Start docker service
+Start [docker-service](bin/docker-service) script
 
-- [docker-service](bin/docker-service)
 - Within distro
   ```bash
   cd ~
-  bin/docker-service
+  bin/docker-service.sh
   ```
 - From powershell
   ```powershell
-  wsl -d Ubuntu /home/betancourtca/bin/docker-service
+  wsl -d Ubuntu /home/betancourtca/bin/docker-service.sh
   ```
 
 ## UbuntuUPMCE (work)
@@ -117,4 +123,20 @@ mkdir distros/UbuntuUPMCE
 wsl --import UbuntuUPMCE distros/UbuntuUPMCE backups/UbuntuBase.tar
 ```
 
-### More to come
+### Configure
+
+```bash
+cd ~
+ln -s /mnt/wsl/workspace workspace
+ln -s workspace/data data
+ln -s workspace/bin bin
+ln -s workspace/.gitconfig .gitconfig
+ln -s workspace/.npmrc .npmrc
+ln -s workspace/nodemon.json nodemon.json
+```
+
+## Notes
+
+- [sample.code-workspace](sample.code-workspace) is a sample vscode workspace containing information needed for accessing `Ubuntu` distro docker.
+- [.vscode](.vscode) folder
+  - [extensions.json](.vscode/extensions.json) contains a list of recommended vscode extensions

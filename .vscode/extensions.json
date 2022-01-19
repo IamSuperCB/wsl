@@ -1,0 +1,28 @@
+{
+  "recommendations": [
+    "arcanis.vscode-zipfs",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "tyriar.luna-paint",
+    "mhutchie.git-graph",
+    "heaths.vscode-guid",
+    "cweijan.vscode-mysql-client2",
+    "dpkshrma.insert-iso-timestamp",
+    "humao.rest-client",
+    "folke.vscode-monorepo-workspace",
+    "tanhakabir.rest-book",
+    "chrmarti.regex",
+    "brunnerh.insert-unicode",
+    "christian-kohler.path-intellisense",
+    "arturock.gitstash",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "d-koppenhagen.file-tree-to-text-generator",
+    "ms-azuretools.vscode-docker",
+    "github.copilot",
+    "flesler.url-encode",
+    "cssho.vscode-svgviewer",
+    "ms-vscode.js-debug"
+  ]
+}
