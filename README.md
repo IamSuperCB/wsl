@@ -2,6 +2,15 @@
 
 Template project for creating private repository to manage wsl development environment.
 
+## Notes
+
+- When you clone this template
+  - If you decide to use a distro other than Ubuntu, Search/Replace Ubuntu with the name of your distro.
+  - Search replace betancourtca with username you used when installing the 'Ubuntu' distro.
+- [sample.code-workspace](sample.code-workspace) is a sample vscode workspace containing information needed for accessing `Ubuntu` distro docker.
+- [.vscode](.vscode) folder
+  - [extensions.json](.vscode/extensions.json) contains a list of recommended vscode extensions
+
 ## Windows Configuration
 
 - [VSCODE](https://code.visualstudio.com/)
@@ -43,7 +52,7 @@ Docker group
 
 ```bash
 sudo groupadd -g 999 docker
-sudo usermod -aG docker $USER
+sudo usermod -aG docker betancourtca
 ```
 
 Docker client
@@ -64,7 +73,7 @@ nvm alias default lts/fermium
 
 ```powershell
 cd ~/wsl
-wsl --export Ubuntu backups/ubunt.base.tar
+wsl --export Ubuntu backups/ubuntu.base.tar
 ```
 
 ### finish configuration (wsl -d Ubuntu)
@@ -87,7 +96,7 @@ Add the following string to ~/.profile
 ```bash
 # Exposes workspace to other distros
 if [ ! -d /mnt/wsl/fos ]; then
-    wsl.exe -d $WSL_DISTRO_NAME -u root /home/$USER/bin/configure-for-secondary-wsl.sh
+    wsl.exe -d $WSL_DISTRO_NAME -u root /home/betancourtca/bin/configure-for-secondary-wsl.sh
 fi
 ```
 
@@ -134,9 +143,3 @@ ln -s workspace/.gitconfig .gitconfig
 ln -s workspace/.npmrc .npmrc
 ln -s workspace/nodemon.json nodemon.json
 ```
-
-## Notes
-
-- [sample.code-workspace](sample.code-workspace) is a sample vscode workspace containing information needed for accessing `Ubuntu` distro docker.
-- [.vscode](.vscode) folder
-  - [extensions.json](.vscode/extensions.json) contains a list of recommended vscode extensions
