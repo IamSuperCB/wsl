@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "wsl",
+			"path": "."
+		}
+	],
+	"settings": {
+		"terminal.integrated.env.linux": {
+			"DOCKER_HOST": "unix:///mnt/wsl/shared-docker/docker.sock"
+		},
+		"docker.host": "unix:///mnt/wsl/shared-docker/docker.sock",
+	}
+}
