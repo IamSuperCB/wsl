@@ -1,14 +1,12 @@
 {
 	"folders": [
 		{
-			"name": "workspace",
+			"name": "wsl",
 			"path": "."
 		}
 	],
 	"settings": {
 		"terminal.integrated.env.linux": {
-			"LOG4JS_DEFAULT_LEVEL": "debug",
-			"GITHUBAUTHTOKEN": "token here",
 			"DOCKER_HOST": "unix:///mnt/wsl/shared-docker/docker.sock"
 		},
 		"docker.host": "unix:///mnt/wsl/shared-docker/docker.sock",

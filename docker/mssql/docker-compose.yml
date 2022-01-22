@@ -1,0 +1,19 @@
+version: "3"
+services:
+  mssql:
+    container_name: MSSQL
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    expose:
+      - "1433"
+    ports:
+      - "1433:1433"
+    env_file: .env
+    # networks:
+    #   - UPMCE
+    # volumes:
+    #   - mssqldata:/var/opt/mssql/data
+# volumes:
+#   mssqldata:
+# networks:
+#   UPMCE:
+#     external: true
